@@ -22,6 +22,8 @@ import com.qihoo360.replugin.helper.LogDebug;
 import com.qihoo360.replugin.helper.LogRelease;
 
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 用来自定义RePlugin行为的类。 <p>
@@ -47,6 +49,7 @@ public final class RePluginConfig {
     private boolean moveFileWhenInstalling = true;
     private boolean printDetailLog = false;
     private int defaultFrameworkVersion = 4;
+    private Set<String> hostPackages = new HashSet<>();
 
     /**
      * 获取插件回调方法。通常无需调用此方法。
@@ -55,6 +58,14 @@ public final class RePluginConfig {
      */
     public RePluginCallbacks getCallbacks() {
         return callbacks;
+    }
+
+    public void addHostPackage(String packageName) {
+        hostPackages.add(packageName);
+    }
+
+    public Set<String> getHostPackages() {
+        return hostPackages;
     }
 
     /**
