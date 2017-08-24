@@ -137,7 +137,6 @@ public class PluginContext extends ContextThemeWrapper {
 
     @Override
     public SharedPreferences getSharedPreferences(String name, int mode) {
-        name = "plugin_" + name;
         return super.getSharedPreferences(name, mode);
     }
 
