@@ -50,6 +50,7 @@ public final class RePluginConfig {
     private boolean printDetailLog = false;
     private int defaultFrameworkVersion = 4;
     private Set<String> hostPackages = new HashSet<>();
+    private Set<String> hostClasses = new HashSet<>();
 
     /**
      * 获取插件回调方法。通常无需调用此方法。
@@ -67,6 +68,15 @@ public final class RePluginConfig {
     public Set<String> getHostPackages() {
         return hostPackages;
     }
+
+    public void addHostClass(String hostClass) {
+        hostClasses.add(hostClass);
+    }
+
+    public Set<String> getHostClasses() {
+        return hostClasses;
+    }
+
 
     /**
      * 设置插件回调方法，可自定义插件框架的回调行为

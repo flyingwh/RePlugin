@@ -105,6 +105,18 @@ public class PluginDexClassLoader extends DexClassLoader {
             }
         }
 
+        for (String hostClassName : RePlugin.getConfig().getHostClasses()) {
+            if (className.equalsIgnoreCase(hostClassName)) {
+                try {
+                    return loadClassFromHost(className, resolve);
+                } catch (ClassNotFoundException e) {
+                    // Do not throw "e" now
+                    cnfException = e;
+                    break;
+                }
+            }
+        }
+
         try {
             pc = super.loadClass(className, resolve);
             if (pc != null) {
